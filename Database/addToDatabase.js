@@ -1,14 +1,21 @@
-
 const mongoose = require("mongoose")
 const VideoLibrary = require("../Models/VideoLibrary.model")
-const { data } = require("./data")
+const {
+  customizedData,
+  fakerData
+} = require("./data")
 
 function addToDatabase() {
-    data.map((video) => {  
-      const NewVideo = new VideoLibrary(video);
-      const savedVideo = NewVideo.save();
-    })
+  customizedData.map((video) => {
+    const data = {
+      ...video,
+      ...fakerData
+    }
+    const NewVideo = new VideoLibrary(data);
+    NewVideo.save();
+  })
 }
 
-module.exports = { addToDatabase }
-
+module.exports = {
+  addToDatabase
+}
