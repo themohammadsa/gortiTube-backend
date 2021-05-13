@@ -19,6 +19,9 @@ databaseConnection();
 
 app.use("/", cors(corsOptions), VideoLibraryRouter);
 
+app.get('/', (req, res) => {
+  res.send('Please visit "https://gortitube.netlify.app/" to view the application. ')
+});
 
 
 app.listen(PORT, () => {
