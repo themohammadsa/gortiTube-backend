@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
-const VideoLibrary = require("../Models/VideoLibrary.model")
+const VideoLibrary = require("../models/videoLibrary.model")
+
 const {
   customizedData,
   fakerData

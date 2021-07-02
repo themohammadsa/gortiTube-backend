@@ -1,9 +1,6 @@
-const express = require("express");
-const { VideoLibrary } = require("../Models/VideoLibrary.model.js");
-const router = express.Router();
+const { VideoLibrary } = require("../models/videoLibrary.model")
 
-router.route("/videolibrary")
-.get(async (req, res) => {
+const getAllVideos = async (req, res) => {
   try {
     const videos = await VideoLibrary.find({});
     res.json({success: true, videos});
@@ -12,10 +9,9 @@ router.route("/videolibrary")
       success: false, error: "Unable to get Videos from server!"
     })
   }  
-})
+}
 
-router.route("/watch/:id")
-.get(async (req, res) => {
+const getVideo = async (req, res) => {
   try {
     const { id } = req.params;
     const video = await VideoLibrary.find({id: id});
@@ -25,6 +21,6 @@ router.route("/watch/:id")
       success: false, error: "Unable to get Video from server!"
     })
   }
-});
+}
 
-module.exports = router;
+module.exports = { getAllVideos, getVideo }
